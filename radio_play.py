@@ -15,7 +15,7 @@ def calculate_offset(filename):
     day = filetime_str[6:8]
     hour = filetime_str[9:11]
     if len(filetime_str) > 12:
-	minute = filetime_str[11:13]
+        minute = filetime_str[11:13]
     else:
         minute = "0"
     filetime = datetime.datetime(int(year), int(month), int(day), int(hour), int(minute), tzinfo=get_localzone())

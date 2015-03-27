@@ -19,4 +19,4 @@ for f in audio_files:
         to_delete.append(f)
 
 for f in to_delete:
-    os.remove(to_delete)
+    os.remove(f)
