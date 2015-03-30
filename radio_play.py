@@ -33,6 +33,7 @@ def duration_to_int(duration_str):
     m = re.match(r'(\d+):(\d+):(\d+)', duration_str)
     if not m:
         raise Exception("Duration format not matched %s" % duration_str)
+    print("duration_to_int %s"%duration_str)
     return int(m.group(1)) * 3600 + int(m.group(2)) * 60 + int(m.group(3))
 
 audio_files = [f for f in os.listdir(audio_dir) if os.path.basename(f).startswith(prefix)]
@@ -41,8 +42,8 @@ CLOSEST = -1
 
 try:
     offset_sec = (len(sys.argv) == 1) and CLOSEST or duration_to_int(sys.argv[1])
-    duration_sec = (len(sys.argv) < 2) and (3600 - 2) or duration_to_int(sys.argv[2])
-except e:
+    duration_sec = (len(sys.argv) <= 2) and (3600 - 2) or duration_to_int(sys.argv[2])
+except Exception as e:
     print("Error: %s"%e)
     usage()
     sys.exit(1)
