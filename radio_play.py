@@ -3,7 +3,7 @@
 import os, sys, datetime, subprocess, re, time
 from tzlocal import get_localzone
 
-audio_dir="/home/sangmank/radio_test"
+audio_dir="/home/sangmank/radio"
 prefix="mc_"
 
 def calculate_offset(filename):

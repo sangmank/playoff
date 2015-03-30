@@ -3,7 +3,7 @@
 import os, sys, datetime, re, subprocess, time
 from tzlocal import get_localzone
 
-audio_dir="/home/sangmank/radio_test"
+audio_dir="/home/sangmank/radio"
 prefix="mc_"
 url = "http://mfmtunein.imbc.com/tmfm/_definst_/tmfm.stream/playlist.m3u8"
 
