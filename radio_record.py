@@ -26,9 +26,10 @@ except e:
 
 start_time = datetime.datetime.now(get_localzone())
 end_time = start_time + datetime.timedelta(seconds=duration_sec)
+cur_time = start_time
 
 while True:
-    filename = prefix + start_time.strftime("%Y%m%d_%H%M%S") + ".mp3"
+    filename = prefix + cur_time.strftime("%Y%m%d_%H%M%S") + ".mp3"
     cmd = 'ffmpeg -i "%s" -t %s  -codec:a libmp3lame -qscale:a 8 -y %s 2>&1 | ts "[%%Y-%%m-%%d %%H:%%M:%%S]"' % (url, duration_str, os.path.join(audio_dir, filename))
     print(cmd)
     out = subprocess.check_call(cmd, shell=True)
@@ -36,3 +37,8 @@ while True:
     cur_time = datetime.datetime.now(get_localzone())
     if cur_time >= end_time:
         break
+    duration = end_time - cur_time
+    hours = duration.total_seconds()/3600
+    minutes = (duration.total_seconds() % 3600) / 60
+    seconds = duration.total_seconds() % 60
+    duration_str = "%d:%d:%d"%(hours, minutes, seconds)
