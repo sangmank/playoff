@@ -4,7 +4,7 @@ import os, sys, datetime, subprocess
 
 audio_dir="/home/sangmank/radio"
 prefix="mc_"
-file_limit = 512 * (1 << 20)
+file_limit = 2048 * (1 << 20)
 
 def file_size(filename):
     return os.stat(filename).st_size
